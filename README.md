@@ -185,12 +185,6 @@ plt.show()
 
 ---
 
-🚀 **Would you like any refinements or additional visualizations?**
-```
-
-
-
-
 
 ### 🧬 Interpretation of FGWAS Results with Nextflow Pipeline & Visualizations
 
