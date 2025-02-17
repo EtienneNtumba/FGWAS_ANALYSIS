@@ -259,13 +259,13 @@ The functional annotation of **exons coding (`ens_coding_exon`) significantly im
 4. **Next steps include fine-mapping, functional validation, and exploring other annotations.**
 
 ---
-🚀 **Would you like additional plots or further analysis?**
-
-
 
 
 ## License
 This project is open-source and available under the **MIT License**.
 
-## Contact
-For questions or contributions, reach out at **etienne.ntumba.kabongo@umontreal.ca** or open an issue in the repository.
+## Author
+
+**Etienne Ntumba Kabongo**  
+📧 Email: [etienne.ntumba.kabongo@umontreal.ca](mailto:etienne.ntumba.kabongo@umontreal.ca)  
+🔗 GitHub: [EtienneNtumba](https://github.com/EtienneNtumba)
