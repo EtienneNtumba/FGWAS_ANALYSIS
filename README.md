@@ -58,7 +58,6 @@ Rscript plot_enrichment.R results/fgwas_output
 - **Prioritizing SNPs in regulatory elements**
 - **Comparing different annotation datasets for GWAS**
 
-```markdown
 # 🧬 Interpretation of FGWAS Results with Nextflow Pipeline & Visualizations
 
 After running FGWAS with and without **functional annotations (`hepg2.E` & `ens_coding_exon`)**, we analyzed:
@@ -133,7 +132,7 @@ The functional annotation of **exons coding (`ens_coding_exon`) significantly im
 
 ---
 🚀 **Would you like additional plots or further analysis?**
-```
+
 
 
 
@@ -141,4 +140,4 @@ The functional annotation of **exons coding (`ens_coding_exon`) significantly im
 This project is open-source and available under the **MIT License**.
 
 ## Contact
-For questions or contributions, reach out at **your-email@example.com** or open an issue in the repository.
+For questions or contributions, reach out at **etienne.ntumba.kabongo@umontreal.ca** or open an issue in the repository.
