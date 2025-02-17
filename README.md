@@ -1,46 +1,68 @@
-fgwas
-=====
+# fgwas Analysis Pipeline
 
-fgwas is a command line tool for integrating functional genomic information into a genome-wide association study (GWAS). The basic setup is as follows: you have performed a GWAS or a meta-analysis of many GWAS, and have identified tens of loci that influence the disease or trait (our approach works best if there are at least ~20 independent loci with p-values less than 5e-8). We set out to address the following questions:
+## Overview
+This repository contains a **functional GWAS (fgwas) pipeline** for integrating **genome-wide association studies (GWAS)** with **functional genomic annotations**. The pipeline is inspired by the approach in Pickrell et al. (2014), which uses **hierarchical modeling** to identify enriched genomic elements influencing traits.
 
-1. Are these associations enriched in particular types of regions of the genome (coding exons, DNAse hypersensitive sites, etc.)?
-2. Can we use these enrichments (if they exist) to identify novel loci influencing the trait?
+## Features
+- **Enrichment Analysis**: Identifies genomic regions (e.g., enhancers, promoters, open chromatin) that are enriched for trait-associated SNPs.
+- **Hierarchical Modeling**: Uses **fgwas** to estimate SNP enrichment probabilities.
+- **Trait-Specific Prioritization**: Re-weights GWAS signals based on functional annotations.
+- **Visualization**: Generates enrichment plots, P-value distributions, and posterior probability estimates.
 
-The underlying model is described in: Pickrell JK (2014) [Joint analysis of functional genomic data and genome-wide association studies of 18 human traits](http://biorxiv.org/content/early/2014/01/22/000752). bioRxiv 10.1101/000752
+## Dependencies
+Ensure you have the following tools and libraries installed:
 
-The annotations used in this paper are available [from GitHub](https://github.com/joepickrell/1000-genomes).
+- **fgwas** ([Source](https://github.com/joepickrell/fgwas))
+- Python (for data preprocessing)
+- R (for statistical analysis & visualization)
+- PLINK (for GWAS file conversion)
 
-##Installation##
+## Installation
+```bash
+git clone https://github.com/your-username/fgwas-pipeline.git
+cd fgwas-pipeline
+```
 
-###Dependencies###
-fgwas depends on:
+## Input Files
+1. **GWAS Summary Statistics** (`gwas.txt`)
+   - Tab-delimited file with columns: `SNP`, `CHR`, `BP`, `P`, `BETA`, `SE`
+2. **Genomic Annotations** (`annotations.txt`)
+   - Preprocessed functional annotation file with SNP-level annotations
+3. **Reference Panel** (`1000G.ref`) 
+   - LD reference file from 1000 Genomes or other sources
 
-- the [GNU Scientific Library](http://www.gnu.org/software/gsl/)
+## Running the Pipeline
+### 1. Preprocessing GWAS Data
+```bash
+python preprocess_gwas.py --input gwas.txt --output gwas_clean.txt
+```
 
-- the [Boost Libraries](http://www.boost.org)
+### 2. Running fgwas
+```bash
+fgwas -i gwas_clean.txt -a annotations.txt -o results/fgwas_output
+```
 
-###Quick Start###
-The most up-to-date release is: version 0.3.6. See ["Releases"](https://github.com/joepickrell/fgwas/releases) above.
-After downloading fgwas-0.3.3.tar.gz at the link above, run:
+### 3. Visualizing Results
+```r
+Rscript plot_enrichment.R results/fgwas_output
+```
 
->tar -xvf fgwas-0.3.6.tar.gz
+## Output Files
+- `fgwas_output.param` → Estimated enrichment parameters for annotations
+- `fgwas_output.pp` → Posterior probabilities for SNP-trait associations
+- `fgwas_output.model` → Best-fit model including multiple annotations
+- `plots/enrichment.png` → Visualization of SNP enrichment across functional elements
 
->cd fgwas-0.3.6
+## Example Use Cases
+- **Fine-mapping GWAS signals using functional annotations**
+- **Prioritizing SNPs in regulatory elements**
+- **Comparing different annotation datasets for GWAS**
 
->./configure
+## References
+- **Pickrell et al. (2014)** Joint analysis of functional genomic data and GWAS of 18 human traits. [bioRxiv](https://doi.org/10.1101/000752)
 
->make
+## License
+This project is open-source and available under the **MIT License**.
 
-This will create an executable file called fgwas in the src directory. The most common compilation error is that the configure script cannot find Boost or GSL. You may have to tell the script explicitly where to find them. For example, on OS X using macports, installations go to the non-standard path /opt/local/lib. To configure in this case, replace the above configure step with:
-
->./configure LDFLAGS=-L/opt/local/lib
-
-Example data is available in the test_data/ directory. To ensure that fgwas is working, run:
-
-> ./src/fgwas -i test_data/test_LDL.fgwas_in.gz -w ens_coding_exon
-
-A user guide is available here: [fgwas v0.3.x User Guide](https://github.com/joepickrell/fgwas/blob/master/man/fgwas_manual.pdf)
-
-Previous versions are available from the [Google Code repository](https://code.google.com/p/gwas/).
-
-# FGWAS_ANALYSIS
+## Contact
+For questions or contributions, reach out at **your-email@example.com** or open an issue in the repository.
