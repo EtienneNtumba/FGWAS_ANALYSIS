@@ -43,3 +43,4 @@ A user guide is available here: [fgwas v0.3.x User Guide](https://github.com/joe
 
 Previous versions are available from the [Google Code repository](https://code.google.com/p/gwas/).
 
+# FGWAS_ANALYSIS
