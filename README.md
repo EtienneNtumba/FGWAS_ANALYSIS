@@ -98,10 +98,10 @@ I will now create a Nextflow pipeline to automate the full FGWAS workflow.
 
 ## **3️⃣ Running the Pipeline**
 
-Save the Nextflow script as `fgwas_pipeline.nf`, then run:
+Save the Nextflow script as `Analysis.nf`, then run:
 
 ```bash
-nextflow run fgwas_pipeline.nf
+nextflow run Analysis.nf
 ```
 
 ---
